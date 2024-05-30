@@ -1,0 +1,7 @@
+---
+- name: Server Configuration Checks
+  hosts: all
+  become: yes
+  roles:
+    - disk_checks
+    - user_check

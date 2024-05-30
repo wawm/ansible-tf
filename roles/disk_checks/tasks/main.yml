@@ -1,0 +1,17 @@
+- name: Copy the disk checks script
+  copy:
+    src: disk_checks.sh
+    dest: /tmp/disk_checks.sh
+    mode: '0755'  
+
+- name: Run disk checks script
+  shell: /tmp/disk_checks.sh
+  register: result
+
+- name: Run /tmp check 
+  shell: /tmp/fs_tmp_chk.sh
+  register: result
+
+- debug:
+    var: result.stdout_lines
+

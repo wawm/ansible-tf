@@ -1,0 +1,13 @@
+- name: Copy the user check script
+  copy:
+    src: user_check.sh
+    dest: /tmp/user_check.sh
+    mode: '0755'  
+
+- name: Run user check script
+  shell: /tmp/user_check.sh
+  register: result
+
+- debug:
+    var: result.stdout_lines
+
